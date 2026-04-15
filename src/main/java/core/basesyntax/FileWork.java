@@ -19,7 +19,7 @@ public class FileWork {
         int index = 0;
 
         for (String textNew : words) {
-            if (!textNew.isEmpty() && textNew.startsWith("w")) {
+            if (textNew.startsWith("w")) {
                 result[index] = textNew;
                 index++;
             }
