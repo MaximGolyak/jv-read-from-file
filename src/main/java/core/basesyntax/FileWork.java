@@ -1,8 +1,35 @@
 package core.basesyntax;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Arrays;
+
 public class FileWork {
     public String[] readFromFile(String fileName) {
-        //write your code here
-        return null;
+        String content;
+        try {
+            content = Files.readString(Path.of(fileName));
+        } catch (IOException e) {
+            throw new RuntimeException("Can't read file", e);
+        }
+        content = content.toLowerCase();
+        String[] words = content.split("[^a-z]+");
+        String[] result = new String[words.length];
+        int index = 0;
+
+        for (String textNew : words) {
+            if (!textNew.isEmpty() && textNew.startsWith("w")) {
+                result[index] = textNew;
+                index++;
+            }
+        }
+
+        String[] finalResult = new String[index];
+        for (int i = 0; i < index; i++) {
+            finalResult[i] = result[i];
+        }
+        Arrays.sort(finalResult);
+        return finalResult;
     }
 }
