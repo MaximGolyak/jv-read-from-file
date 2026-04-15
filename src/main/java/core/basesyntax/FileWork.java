@@ -25,10 +25,7 @@ public class FileWork {
             }
         }
 
-        String[] finalResult = new String[index];
-        for (int i = 0; i < index; i++) {
-            finalResult[i] = result[i];
-        }
+        String[] finalResult = Arrays.copyOf(result, index);
         Arrays.sort(finalResult);
         return finalResult;
     }
